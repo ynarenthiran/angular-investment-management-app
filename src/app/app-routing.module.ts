@@ -20,11 +20,11 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'fixed-deposit',
-        loadChildren: './fixed-deposit/fixed-deposit.module#FixedDepositModule'
+        loadChildren: () => import('./fixed-deposit/fixed-deposit.module').then(m => m.FixedDepositModule)
       }
     ]
   },
