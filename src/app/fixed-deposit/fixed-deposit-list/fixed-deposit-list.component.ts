@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DataSource } from '@angular/cdk';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { AppTitleService, FixedDepositService, DialogService } from '../../core/services';
 import { FixedDeposit } from '../../shared/models';
 import { CreateFixedDepositModalComponent } from '../create-fixed-deposit-modal/create-fixed-deposit-modal.component';
+import { DataSource } from '@angular/cdk/table';
 
 @Component({
   selector: 'app-fixed-deposit-list',
@@ -32,7 +32,7 @@ export class FixedDepositListComponent implements OnInit {
 
   constructor(
     private appTitleService: AppTitleService,
-    private mdDialog: MdDialog,
+    private mdDialog: MatDialog,
     private dialogService: DialogService,
     public fdService: FixedDepositService
   ) {

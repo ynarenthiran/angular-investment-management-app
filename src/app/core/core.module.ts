@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import {
-  MdSnackBarModule,
-  MdIconModule,
-  MdToolbarModule,
-  MdSidenavModule,
-  MdButtonModule,
-  MdListModule,
-  MdDialogModule
+  MatSnackBarModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatButtonModule,
+  MatListModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -30,19 +34,27 @@ import { BaseLayoutComponent } from './components/base-layout/base-layout.compon
 import { SnackBarComponent } from './components/snackbar';
 import { DialogComponent } from './components/dialog/dialog.component';
 
+const MaterialModule = [
+  MatSnackBarModule,
+  MatIconModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatButtonModule,
+  MatListModule,
+  MatDialogModule,
+  MatInputModule,
+  MatSelectModule,
+  MatFormFieldModule,
+  MatProgressSpinnerModule
+]
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    MdSnackBarModule,
-    MdIconModule,
     FlexLayoutModule,
-    MdToolbarModule,
-    MdSidenavModule,
-    MdButtonModule,
-    MdListModule,
-    MdDialogModule,
-    HttpModule,
+    HttpClientModule,
+    MaterialModule,
     InMemoryWebApiModule.forRoot(InMemoryDBService, {
       apiBase: '/',
       delay: 1000
@@ -67,6 +79,9 @@ import { DialogComponent } from './components/dialog/dialog.component';
     // route guards
     AppRouteGuard
   ],
+  // exports: [
+  //   MaterialModule
+  // ],
   entryComponents: [
     SnackBarComponent,
     DialogComponent

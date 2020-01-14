@@ -24,7 +24,7 @@
 
 // Temporary Override to avoid issue of dropdown not aligned with other fields till it is resovled in angular material
 // library.
-md-select {
+mat-select {
   position: relative;
   top: -2px;
 }

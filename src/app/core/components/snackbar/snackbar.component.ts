@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 export declare type SnackbarType = 'error' | 'warning' | 'success' | 'info';
 @Component({

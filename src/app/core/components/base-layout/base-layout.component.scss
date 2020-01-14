@@ -3,7 +3,7 @@
   flex: 1;
 }
 
-md-sidenav {
+mat-sidenav {
   width: 250px;
   padding: 15px;
 }
@@ -12,7 +12,7 @@ md-sidenav {
   display: flex;
   align-items: center;
 
-  button[md-icon-button] {
+  button[mat-icon-button] {
     margin-right: 15px;
   }
 }

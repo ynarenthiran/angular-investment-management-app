@@ -1,90 +1,90 @@
 <div fxLayout="column" fxFlexFill>
-  <md-toolbar>
+  <mat-toolbar>
       <span>Total {{fdService.lstFixedDeposit$.getValue().length}} Fixed Deposits</span>
       <div fxFlex></div>
       <div class="actions">
-        <button md-raised-button (click)="addFD()">Add</button>
+        <button mat-raised-button (click)="addFD()">Add</button>
       </div>
-  </md-toolbar>
+  </mat-toolbar>
   <div class="table-container mat-elevation-z1">
-    <md-table [dataSource]="dataSource">
+    <mat-table [dataSource]="dataSource">
       <ng-container *ngFor="let config of columnConfig" [cdkColumnDef]="config.id">
         <!-- Header Cell -->
-        <md-header-cell
+        <mat-header-cell
             *cdkHeaderCellDef
             [ngClass]="'text-'+(config.align || 'left')"
             [fxFlex]="config.width ? '0 0 '+config.width : 'grow'">{{config.name}}
-        </md-header-cell>
+        </mat-header-cell>
 
         <!-- Content Cell -->
         <ng-container [ngSwitch]="config.id">
 
           <!-- Start Date -->
           <ng-container *ngSwitchCase="'startDate'">
-            <md-cell
+            <mat-cell
                 *cdkCellDef="let row"
                 [ngClass]="'text-'+(config.align || 'left')"
                 [fxFlex]="config.width ? '0 0 '+config.width : 'grow'">
               {{row.startDate | date: 'dd/MM/yyyy'}}
-            </md-cell>
+            </mat-cell>
           </ng-container>
 
           <!-- End Date -->
           <ng-container *ngSwitchCase="'endDate'">
-            <md-cell
+            <mat-cell
                 *cdkCellDef="let row"
                 [ngClass]="'text-'+(config.align || 'left')"
                 [fxFlex]="config.width ? '0 0 '+config.width : 'grow'">
               {{row.endDate | date: 'dd/MM/yyyy'}}
-            </md-cell>
+            </mat-cell>
           </ng-container>
 
           <!-- Re-invest Date -->
           <ng-container *ngSwitchCase="'isReinvest'">
-            <md-cell
+            <mat-cell
                 *cdkCellDef="let row"
                 [ngClass]="'text-'+(config.align || 'left')"
                 [fxFlex]="config.width ? '0 0 '+config.width : 'grow'">
-              <md-icon *ngIf="row.isReinvest">check</md-icon>
-            </md-cell>
+              <mat-icon *ngIf="row.isReinvest">check</mat-icon>
+            </mat-cell>
           </ng-container>
 
           <!-- Actions -->
           <ng-container *ngSwitchCase="'actions'">
-            <md-cell
+            <mat-cell
                 *cdkCellDef="let row"
                 [ngClass]="'text-'+(config.align || 'left')"
                 [fxFlex]="config.width ? '0 0 '+config.width : 'grow'">
               <button
-                  md-icon-button
+                  mat-icon-button
                   mdTooltip="Edit"
                   (click)="editFD(row)">
-                <md-icon class="md-18">mode_edit</md-icon>
+                <mat-icon class="mat-18">mode_edit</mat-icon>
               </button>
                 <button
-                    md-icon-button
+                    mat-icon-button
                     mdTooltip="Delete"
                     (click)="deleteFD(row)">
-                  <md-icon class="md-18">delete</md-icon>
+                  <mat-icon class="mat-18">delete</mat-icon>
               </button>
-            </md-cell>
+            </mat-cell>
           </ng-container>
 
           <!-- All Other Columns -->
           <ng-container *ngSwitchDefault>
-            <md-cell
+            <mat-cell
               *cdkCellDef="let row"
               [ngClass]="'text-'+(config.align || 'left')"
               [fxFlex]="config.width ? '0 0 '+config.width : 'grow'">{{row[config.id]}}
-            </md-cell>
+            </mat-cell>
           </ng-container>
 
         </ng-container>
       </ng-container>
 
-      <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-      <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
-    </md-table>
+      <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
   </div>
   <app-busy-loader [isBusy]="isBusy"></app-busy-loader>
 </div>

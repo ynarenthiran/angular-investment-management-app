@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 import { SnackBarComponent, SnackbarType } from '../components/snackbar';
 
 @Injectable()
 export class SnackBarService {
 
-  constructor(private snackBar: MdSnackBar) { }
+  constructor(private snackBar: MatSnackBar) { }
 
-  showError(message: string, action?: string, config?: MdSnackBarConfig) {
+  showError(message: string, action?: string, config?: MatSnackBarConfig) {
     config = { ...config, ...{duration: 3000} };
     return this.prepareAndGetSnackBarRef(message, 'error', action, config);
   }
 
-  showWarning(message: string, action?: string, config?: MdSnackBarConfig) {
+  showWarning(message: string, action?: string, config?: MatSnackBarConfig) {
     return this.prepareAndGetSnackBarRef(message, 'warning', action, config);
   }
 
-  showSuccess(message: string, action?: string, config?: MdSnackBarConfig) {
+  showSuccess(message: string, action?: string, config?: MatSnackBarConfig) {
     return this.prepareAndGetSnackBarRef(message, 'success', action, config);
   }
 
-  showInfo(message: string, action?: string, config?: MdSnackBarConfig) {
+  showInfo(message: string, action?: string, config?: MatSnackBarConfig) {
     return this.prepareAndGetSnackBarRef(message, 'info', action, config);
   }
 
-  private prepareAndGetSnackBarRef(message: string, type: SnackbarType, action?: string, config?: MdSnackBarConfig) {
+  private prepareAndGetSnackBarRef(message: string, type: SnackbarType, action?: string, config?: MatSnackBarConfig) {
     const defaultConfig = {
       duration: 3000
     };

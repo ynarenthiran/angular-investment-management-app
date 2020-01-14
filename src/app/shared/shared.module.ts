@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule, MdNativeDateModule } from '@angular/material';
+import { MatNativeDateModule, MatProgressSpinnerModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CdkTableModule } from '@angular/cdk';
+import { CdkTableModule } from '@angular/cdk/table';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 
@@ -12,11 +12,12 @@ import { RestrictInputDirective } from './directives';
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule,
+    // MaterialModule,
     FlexLayoutModule,
     CdkTableModule,
     ReactiveFormsModule,
-    MdNativeDateModule
+    MatNativeDateModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     // Components
@@ -27,11 +28,12 @@ import { RestrictInputDirective } from './directives';
   ],
   exports: [
     CommonModule,
-    MaterialModule,
+    // MaterialModule,
     FlexLayoutModule,
     CdkTableModule,
     ReactiveFormsModule,
-    MdNativeDateModule,
+    MatNativeDateModule,
+    MatProgressSpinnerModule,
 
     // Components
     BusyLoaderComponent,

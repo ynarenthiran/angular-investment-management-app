@@ -1,32 +1,32 @@
 <h1 mdDialogTitle>{{isEditMode ? 'Edit Fixed Deposit' : 'Add Fixed Deposit'}}</h1>
 
-<form #ngForm="ngForm" [formGroup]="form" (ngSubmit)="saveFD()">
-  <md-dialog-content>
+<form #ngForm [formGroup]="form" (ngSubmit)="saveFD()">
+  <mat-dialog-content>
     <div class="field-row">
       <div class="field-container">
-        <md-input-container>
+        <mat-form-field>
             <input
               mdInput
               formControlName="fdNumber"
               type="text"
               placeholder="FD Number*">
-              <md-error *ngIf="form?.get('fdNumber').hasError('required')">
+              <mat-error *ngIf="form?.get('fdNumber').hasError('required')">
                 Please enter FD Number.
-              </md-error>
-        </md-input-container>
+              </mat-error>
+        </mat-form-field>
       </div>
       <div class="field-container">
-        <md-select
+        <mat-select
             formControlName="bank"
             placeholder="Bank*"
-            [class.mat-select-invalid]="isErrorState(form?.get('bank'))">
-          <md-option>Select Bank</md-option>
-          <md-option
+            [class.mat-select-invalid]="isErrorState(form?.get('bank'), ngForm)">
+          <mat-option>Select Bank</mat-option>
+          <mat-option
               *ngFor="let bank of user?.banks"
               [value]="bank.id">{{bank.name}}
-          </md-option>
-        </md-select>
-        <div class="mat-select-subscript-wrapper" *ngIf="isErrorState(form?.get('bank'))">
+          </mat-option>
+        </mat-select>
+        <div class="mat-select-subscript-wrapper" *ngIf="isErrorState(form?.get('bank'), ngForm)">
           <div class="mat-select-error" *ngIf="form?.get('bank').hasError('required')">
             Please selet bank.
           </div>
@@ -35,38 +35,38 @@
     </div>
     <div class="field-row">
       <div class="field-container">
-        <md-select
+        <mat-select
             formControlName="accountNo"
             placeholder="Account Number*"
-            [class.mat-select-invalid]="isErrorState(form?.get('accountNo'))">
-          <md-option>Select Account Number</md-option>
-          <md-option
+            [class.mat-select-invalid]="isErrorState(form?.get('accountNo'), ngForm)">
+          <mat-option>Select Account Number</mat-option>
+          <mat-option
               *ngFor="let account of lstAccounts"
               [value]="account.accountNumber">{{account.accountNumber}}
-          </md-option>
-        </md-select>
-        <div class="mat-select-subscript-wrapper" *ngIf="isErrorState(form?.get('accountNo'))">
+          </mat-option>
+        </mat-select>
+        <div class="mat-select-subscript-wrapper" *ngIf="isErrorState(form?.get('accountNo'), ngForm)">
           <div class="mat-select-error" *ngIf="form?.get('accountNo').hasError('required')">
             Please selet Account Number.
           </div>
         </div>
       </div>
       <div class="field-container">
-        <md-input-container>
+        <mat-form-field>
             <input
               mdInput
               formControlName="amount"
               placeholder="Amount*"
               [restrictInput]="'number'">
-              <md-error *ngIf="form?.get('amount').hasError('required')">
+              <mat-error *ngIf="form?.get('amount').hasError('required')">
                 Please enter Amount.
-              </md-error>
-        </md-input-container>
+              </mat-error>
+        </mat-form-field>
       </div>
     </div>
     <div class="field-row">
       <div class="field-container">
-        <md-input-container>
+        <mat-form-field>
           <input
             mdInput
             readonly
@@ -76,11 +76,11 @@
             [max]="form?.get('endDate').value"
             (click)="startDatePickerRef.open()">
           <button mdSuffix [mdDatepickerToggle]="startDatePickerRef"></button>
-        </md-input-container>
-        <md-datepicker #startDatePickerRef [startAt]="form?.get('startDate').value"></md-datepicker>
+        </mat-form-field>
+        <mat-datepicker #startDatePickerRef [startAt]="form?.get('startDate').value"></mat-datepicker>
       </div>
       <div class="field-container">
-        <md-input-container>
+        <mat-form-field>
           <input
             mdInput
             readonly
@@ -90,34 +90,34 @@
             [min]="form?.get('startDate').value"
             (click)="endDatePickerRef.open()">
           <button mdSuffix [mdDatepickerToggle]="endDatePickerRef"></button>
-        </md-input-container>
-        <md-datepicker #endDatePickerRef [startAt]="form?.get('endDate').value"></md-datepicker>
+        </mat-form-field>
+        <mat-datepicker #endDatePickerRef [startAt]="form?.get('endDate').value"></mat-datepicker>
       </div>
     </div>
     <div class="field-row">
       <div class="field-container">
-        <md-checkbox
+        <mat-checkbox
             formControlName="reinvest"
             color="primary">Re-investible
-        </md-checkbox>
+        </mat-checkbox>
       </div>
     </div>
-  </md-dialog-content>
-  <md-dialog-actions>
-      <button md-button mdDialogClose type="button">Cancel</button>
-      <button md-button type="submit">Save</button>
-  </md-dialog-actions>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+      <button mat-button mdDialogClose type="button">Cancel</button>
+      <button mat-button type="submit">Save</button>
+  </mat-dialog-actions>
   <app-busy-loader [isBusy]="isBusy"></app-busy-loader>
 </form>
 
 
 <!-- Example of how to change min-width pf any field declaratively -->
-<!-- <div class="field-container" fxFlex="1 0 200px" fxFlex.gt-md="1 0 300px">
-  <md-input-container>
+<!-- <div class="field-container" fxFlex="1 0 200px" fxFlex.gt-mat="1 0 300px">
+  <mat-form-field>
       <input
         mdInput
         formControlName="fdNumber"
         type="text"
         placeholder="FD Number">
-  </md-input-container>
+  </mat-form-field>
 </div> -->

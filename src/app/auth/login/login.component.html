@@ -12,26 +12,26 @@
         fxLayoutGap="15px"
         [formGroup]="loginForm"
         (ngSubmit)="login()">
-      <md-input-container  floatPlaceholder="never">
+      <mat-form-field  floatPlaceholder="never">
         <input
             mdInput
             formControlName="email"
             placeholder="Email">
-        <md-error *ngIf="loginForm.get('email').errors?.required">Please enter email.</md-error>
-        <md-error *ngIf="loginForm.get('email').errors?.pattern">Please enter valid email.</md-error>
-      </md-input-container>
+        <mat-error *ngIf="loginForm.get('email').errors?.required">Please enter email.</mat-error>
+        <mat-error *ngIf="loginForm.get('email').errors?.pattern">Please enter valid email.</mat-error>
+      </mat-form-field>
 
-      <md-input-container  floatPlaceholder="never">
+      <mat-form-field  floatPlaceholder="never">
         <input
             mdInput
             type="password"
             formControlName="password"
             placeholder="Password">
-        <md-error *ngIf="loginForm.get('password').errors?.required">Please enter password.</md-error>
-      </md-input-container>
+        <mat-error *ngIf="loginForm.get('password').errors?.required">Please enter password.</mat-error>
+      </mat-form-field>
 
       <button
-          md-raised-button
+          mat-raised-button
           color="accent"
           type="subtmit">Login
       </button>
@@ -39,7 +39,7 @@
 
     <!-- Templater Driven Form -->
     <!-- <form #form="ngForm">
-      <md-input-container  [floatPlaceholder]="never">
+      <mat-form-field  [floatPlaceholder]="never">
         <input
             name="email"
             mdInput
@@ -47,9 +47,9 @@
             placeholder="Email"
             #email="ngModel"
             required>
-        <md-error *ngIf="email.errors?.required">Please enter email.</md-error>
-        <md-error *ngIf="email.errors?.pattern">Please enter valid email.</md-error>
-      </md-input-container>
+        <mat-error *ngIf="email.errors?.required">Please enter email.</mat-error>
+        <mat-error *ngIf="email.errors?.pattern">Please enter valid email.</mat-error>
+      </mat-form-field>
     </form>-->
   </div>
 </div>

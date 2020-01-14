@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material';
 
 import { AppTitleService, AuthService } from '../../services';
 
@@ -11,7 +11,7 @@ import { AppTitleService, AuthService } from '../../services';
 })
 export class BaseLayoutComponent implements OnInit {
 
-  @ViewChild('sidenav') sidenav: MdSidenav;
+  // @ViewChild('sidenav') sidenav: MatSidenav;
   title: string;
 
   links = [
@@ -34,12 +34,12 @@ export class BaseLayoutComponent implements OnInit {
 
   }
 
-  goToPage(link) {
+  goToPage(link, sidenav) {
     if (link.title === 'Logout') {
       this.authService.logout();
     }
     this.router.navigate([link.link]);
-    this.sidenav.close();
+    sidenav.close();
   }
 
 }

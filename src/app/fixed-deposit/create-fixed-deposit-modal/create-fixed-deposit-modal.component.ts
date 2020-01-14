@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/finally';
-import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 import { FixedDeposit, User, UserBank, UserBankAccount } from '../../shared/models';
 import { FixedDepositService, UserService } from '../../core/services';
@@ -16,7 +16,7 @@ import { FixedDepositService, UserService } from '../../core/services';
 })
 export class CreateFixedDepositModalComponent implements OnInit {
 
-  @ViewChild('ngForm') formGroupDirective: FormGroupDirective;
+  // @ViewChild('ngForm') formGroupDirective: FormGroupDirective;
 
   fixedDeposit: FixedDeposit = new FixedDeposit();
 
@@ -36,8 +36,8 @@ export class CreateFixedDepositModalComponent implements OnInit {
     private formBuilder: FormBuilder,
     private fdService: FixedDepositService,
     private userService: UserService,
-    private mdDialogRef: MdDialogRef<CreateFixedDepositModalComponent>,
-    @Inject(MD_DIALOG_DATA) public data: any
+    private mdDialogRef: MatDialogRef<CreateFixedDepositModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.prepareForm();
     this.loadData(data.fdId);
@@ -74,10 +74,10 @@ export class CreateFixedDepositModalComponent implements OnInit {
     }
   }
 
-  isErrorState(control: FormControl): boolean {
+  isErrorState(control: FormControl, formGroupDirective: FormGroupDirective): boolean {
     const isInvalid = control && control.invalid;
     const isTouched = control && control.touched;
-    const isSubmitted = this.formGroupDirective.submitted;
+    const isSubmitted = formGroupDirective.submitted;
     return !!(isInvalid && (isTouched || isSubmitted));
   }
 
